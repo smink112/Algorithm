@@ -17,7 +17,8 @@ public class Main {
 		
 		for(int i = 0; i < c.length; i++) {
 			c[i] = s.charAt(i);
-			sum += c[i] - '0';
+			//sum += c[i] - '0';
+			sum += Character.getNumericValue(c[i]);
 		}
 		
 		System.out.println(sum);
