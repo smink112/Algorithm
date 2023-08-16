@@ -20,9 +20,9 @@ public class Main {
 	
 		arr = br.readLine().toCharArray();
 		
-		int sum = 0;
+		long sum = 0;
 		for (int i = 0; i < arr.length; i++) {
-			int a = ((arr[i]-96) * (int)Math.pow(31, i)) % 1234567891;
+			long a = ((long)(arr[i]-96) * (long)Math.pow(31, i)) % 1234567891;
 			sum = (sum + a) % 1234567891;
 		}
 		
