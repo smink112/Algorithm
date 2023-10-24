@@ -20,17 +20,19 @@ public class Main {
             P[i + 1] = 'I';
         }
 
-        char[] S = new char[M];
-        S = br.readLine().toCharArray();
-        for (int i = 0; i <= M - (2 * N + 1); i++) {
-            if (S[i] == 'I') {
-                int temp = 0;
-                for (int j = 0; j < 2 * N + 1; j++) {
-                    if (S[i + j] == P[j]) temp++;
-                }
-                if(temp == 2*N+1){
+        char[] S = br.readLine().toCharArray();
+        int pattern = 0;
+        for (int i = 1; i <M-1; i++) {
+            if(S[i-1]=='I' && S[i]=='O' && S[i+1]=='I'){
+                pattern++;
+                if(pattern == N){
+                    pattern--;  //다음 i에서 IOI가 한번 더 발견되면 또 해당될 수 있게끔
                     count++;
                 }
+                i++;
+            }
+            else {  //한번이라도 패턴이 끊기면
+                pattern = 0;
             }
         }
 
