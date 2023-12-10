@@ -24,9 +24,12 @@ public class Main {
         }
 
         Node node = new Node(0,0);
-        dfs(node, 0);
-
-        System.out.println(Max);
+        if (N == 1 && M == 1){
+            System.out.println(1);
+        }else{
+            dfs(node, 0);
+            System.out.println(Max);
+        }
 
     }   //main
 
