@@ -1,33 +1,36 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	static boolean[] prime;
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
 
-	public static void main(String[] args) throws Exception {
-		String s = br.readLine();
-		StringTokenizer st = new StringTokenizer(s);
-		int M = Integer.parseInt(st.nextToken());
-		int N = Integer.parseInt(st.nextToken());
+    static int n, m;
+    static int[] A;
 
-		prime = new boolean[N + 1];
+    public static void main(String[] args) throws IOException {
+        st = new StringTokenizer(br.readLine(), " ");
+        m = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
+        A = new int[n + 1];
 
-		prime[0] = prime[1] = true;
+        for (int i = 2; i <= n; i++) {
+            A[i] = i;
+        }
 
-		for (int i = 2; i * i <= N; i++) {
-			if (!prime[i]) {
-				for (int j = i * i; j <= N; j += i) {
-					prime[j] = true;
-				}
-			}
-		}
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (A[i] == 0) continue;
+            for (int j = 2 * i; j <= n; j += i) {
+                A[j] = 0;
+            }
+        }
 
-		for (int i = M; i <= N; i++) {
-			if (!prime[i]) {
-				System.out.println(i);
-			}
-		}
-	}
+        for (int i = m; i <= n; i++) {
+            if (A[i] != 0)
+                System.out.println(A[i]);
+        }
+
+    }
 }
